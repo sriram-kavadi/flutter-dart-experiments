@@ -6,7 +6,7 @@ Welcome to the **Flutter and Dart Lab Experiments** repository. This repository 
 
 ## 1. Project Overview
 
-This repository acts as a comprehensive laboratory submission codebase. It covers environment configuration, Dart SDK verification, basic Dart programming syntax, core Flutter widget exploration, multi-widget layout structures (`Row`, `Column`, `Stack`), responsive design principles, and screen-size adaptation using `MediaQuery` and custom breakpoints.
+This repository acts as a comprehensive laboratory submission codebase. It covers environment configuration, Dart SDK verification, basic Dart programming syntax, core Flutter widget exploration, multi-widget layout structures (`Row`, `Column`, `Stack`), responsive design principles, screen-size adaptation using `MediaQuery` and custom breakpoints, and Flutter navigation using both imperative (`Navigator.push`) and declarative (`named routes`) approaches.
 
 ---
 
@@ -20,6 +20,8 @@ This repository acts as a comprehensive laboratory submission codebase. It cover
 | **2(b)** | Flutter Layouts | Implement layout structures using `Row`, `Column`, `Stack`, and `Positioned` widgets |
 | **3(a)** | Responsive UI | Design a responsive UI adapting seamlessly to Mobile, Tablet, and Desktop screens |
 | **3(b)** | Media Queries and Breakpoints | Implement screen adaptation using `MediaQuery` and explicit width breakpoints |
+| **4(a)** | Navigator Navigation | Set up navigation between screens using `Navigator.push()`, `Navigator.pop()`, and custom route transitions |
+| **4(b)** | Named Routes Navigation | Implement navigation using a centralized route table with `Navigator.pushNamed()` and route arguments |
 
 ---
 
@@ -101,9 +103,23 @@ flutter-dart-experiments/
 │       │   └── main.dart
 │       └── pubspec.yaml
 │
-└── 3b-media-queries-breakpoints/
+├── 3b-media-queries-breakpoints/
+│   ├── README.md
+│   └── breakpoints_demo/
+│       ├── lib/
+│       │   └── main.dart
+│       └── pubspec.yaml
+│
+├── 4a-navigator-navigation/
+│   ├── README.md
+│   └── navigator_demo/
+│       ├── lib/
+│       │   └── main.dart
+│       └── pubspec.yaml
+│
+└── 4b-named-routes-navigation/
     ├── README.md
-    └── breakpoints_demo/
+    └── named_routes_demo/
         ├── lib/
         │   └── main.dart
         └── pubspec.yaml
@@ -164,9 +180,53 @@ flutter pub get
 flutter run
 ```
 
+### Experiment 4(a): Navigator Navigation
+Execute the imperative Navigator demonstration app:
+
+```bash
+cd 4a-navigator-navigation/navigator_demo
+flutter pub get
+flutter run
+```
+
+### Experiment 4(b): Named Routes Navigation
+Execute the named routes demonstration app:
+
+```bash
+cd 4b-named-routes-navigation/named_routes_demo
+flutter pub get
+flutter run
+```
+
 ---
 
-## 8. Learning Outcomes
+## 8. Navigation Concepts Summary (Experiments 4a & 4b)
+
+### Experiment 4(a) — Imperative Navigation (Navigator)
+
+| API | Purpose |
+| :--- | :--- |
+| `Navigator.push(context, MaterialPageRoute(...))` | Push a new screen onto the stack |
+| `Navigator.pop(context)` | Remove the top screen from the stack |
+| `Navigator.push<T>()` + `Navigator.pop(context, value)` | Pass data back from a screen |
+| `PageRouteBuilder` | Define custom animated screen transitions |
+
+### Experiment 4(b) — Declarative Navigation (Named Routes)
+
+| API | Purpose |
+| :--- | :--- |
+| `routes: { '/name': (ctx) => Widget() }` | Register route names in `MaterialApp` |
+| `Navigator.pushNamed(context, '/name')` | Navigate using a route name string |
+| `Navigator.pushNamed(..., arguments: data)` | Pass arguments with named navigation |
+| `ModalRoute.of(context)!.settings.arguments` | Read arguments in destination screen |
+| `Navigator.pushReplacementNamed()` | Replace the current route (no back) |
+| `Navigator.popAndPushNamed()` | Pop current and push new route |
+| `Navigator.pushNamedAndRemoveUntil()` | Push and clear previous routes from stack |
+| `onUnknownRoute:` | Fallback for unregistered route names |
+
+---
+
+## 9. Learning Outcomes
 
 By completing these laboratory experiments, students and developers will achieve the following:
 
@@ -176,10 +236,12 @@ By completing these laboratory experiments, students and developers will achieve
 4. **Layout Architecture**: Master multi-child widget positioning using horizontal (`Row`), vertical (`Column`), and layered z-index (`Stack` / `Positioned`) layouts.
 5. **Adaptive Principles**: Construct responsive layouts using fluid constraints (`LayoutBuilder`, `Expanded`, `Flexible`).
 6. **Breakpoints & MediaQuery**: Implement adaptive responsive UIs that react to real-time window resizing and device orientations.
+7. **Imperative Navigation**: Use `Navigator.push()` and `Navigator.pop()` to manage a screen stack, pass data forward and backward, and apply custom animated transitions.
+8. **Named Route Navigation**: Build a centralized route registry using `MaterialApp.routes`, navigate with `pushNamed()`, transfer arguments via `ModalRoute`, and manage the navigation stack with `pushReplacementNamed()` and `pushNamedAndRemoveUntil()`.
 
 ---
 
-## 9. Git Commit Conventions
+## 10. Git Commit Conventions
 
 This repository follows Conventional Commits standard rules for commit messages:
 
