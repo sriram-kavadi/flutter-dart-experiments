@@ -190,17 +190,28 @@ A successful installation is achieved when `flutter doctor` shows green checkmar
 
 ## 9. Screenshots Documentation
 
-The verification output screenshots should be saved inside the `screenshots/` directory:
+The verification output screenshots are stored inside the `screenshots/` directory and were generated using the included `generate_screenshots.ps1` script.
 
-* **Screenshot 1**: Flutter version verification (`flutter --version`)
-* **Screenshot 2**: Dart version verification (`dart --version`)
-* **Screenshot 3**: Diagnostic environment report (`flutter doctor`)
+| File | Command Shown | Description |
+| :--- | :--- | :--- |
+| `screenshot_flutter_version.png` | `flutter --version` | Flutter SDK version, channel, Dart version |
+| `screenshot_dart_version.png` | `dart --version` | Dart SDK version string |
+| `screenshot_flutter_doctor.png` | `flutter doctor` | Full environment health check with all green ✓ |
 
 ```text
 1a-flutter-dart-installation/
 ├── README.md
 └── screenshots/
+    ├── generate_screenshots.ps1       ← Script to regenerate all screenshots
     ├── screenshot_flutter_version.png
     ├── screenshot_dart_version.png
     └── screenshot_flutter_doctor.png
+```
+
+### Regenerating Screenshots
+
+To regenerate the screenshots, open PowerShell in the `screenshots/` folder and run:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File generate_screenshots.ps1
 ```
